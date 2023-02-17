@@ -25,7 +25,6 @@ class BookingService{
                     'is_available' => $booking->product->bookings->count() < $booking->product->capacity ? 'Available' : 'Unavailable',
                 ];
             });
-            Log::info('search', ['get booking' => $data]);
             return response()->json(['data' => $data], 200);
         } catch (\Exception $e) {
             Log::error('Error while getting bookings: ' . $e->getMessage());
